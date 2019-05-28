@@ -1,6 +1,6 @@
 
-function Hand(card1, card2, card3, card4) {
-  this.cards = [card1, card2, card3, card4];
+function Hand(hand) {
+  this.cards = hand;
 };
 
 

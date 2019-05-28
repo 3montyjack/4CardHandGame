@@ -11,6 +11,14 @@ Deck.prototype.draw = function () {
   return this.list.pop();
 }
 
+Deck.prototype.drawHand = function () {
+  var tempHand = [];
+  for (var i = 0; i < 4; i++) {
+    tempHand.push(this.list.pop());
+  }
+  return tempHand;
+}
+
 Deck.prototype.removeCard = function(card) {
   var temp;
   for (var i = 0; i < this.list.length; i++) {

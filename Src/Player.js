@@ -1,5 +1,6 @@
-function Player(name) {
+function Player(name, hand) {
   this.name = name
+  this.hand = new Hand(hand);
 }
 
 
