@@ -7,6 +7,10 @@ function Deck(full) {
   }
 };
 
+Deck.prototype.draw = function () {
+  return this.list.pop();
+}
+
 Deck.prototype.removeCard = function(card) {
   var temp;
   for (var i = 0; i < this.list.length; i++) {
@@ -29,8 +33,8 @@ Deck.prototype.addCard = function(card) {
   }
 
   this.list.push(card);
-
-  return true;
+  shuffleDeck(this.list);
+  return this.list;
 };
 
 Deck.prototype.size = function () {

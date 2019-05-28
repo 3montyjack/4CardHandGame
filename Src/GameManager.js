@@ -1,17 +1,31 @@
 // These are tests to make sure the game is running well
 
 function GameManager() {
-  testCard();
-  testDeck();
+  //testPlayer();
+  //testCard();
+  //testDeck();
   testHand();
 
 }
+
+
+function testPlayer() {
+  console.log("______Testing Player______")
+  var player1 = new Player("Player 1")
+
+  console.log(player1.print());
+}
+
 function testCard() {
   console.log("______Testing Card______")
   var card = new Card("10", "C");
   var card2 = new Card("10", "C");
-  card.print();
+  console.log(card.print());
   console.log("Equals function: " + card.equals(card2))
+  var player = new Player("Player");
+  console.log("Having player look at the card");
+  card.look(player);
+  console.log(card.print());
 }
 
 function testDeck() {
@@ -31,7 +45,6 @@ function testDeck() {
 
   DeckFull.removeCard(TempCard);
   console.log("Checking Remove Card: " + (DeckFull.size() == ((numDecks * 52) -1)) + " " + DeckFull.size());
-
   DeckEmpty.addCard(TempCard);
   console.log("Checking Adding Card To Empty: " + (DeckEmpty.size() == 1) + " " + DeckEmpty.size());
 
@@ -45,13 +58,14 @@ function testHand() {
   console.log("Draw Deck Stats: " + DeckDraw.print());
 
   var DeckDiscard = new Deck(false);
-  console.log("Discard Deck Stats: " + DeckDraw.print());
+  console.log("Discard Deck Stats: " + DeckDiscard.print());
 
   var hands = [];
 
-  for i = 0; i < numPlayers; i++) {
-    hands.push(new Hand());
+  for (var i = 0; i < numPlayers; i++) {
+    hands.push(new Hand(DeckDraw.draw(),DeckDraw.draw(),DeckDraw.draw(),DeckDraw.draw()));
     console.log(hands[i].print());
   }
+  console.log("Draw Deck Stats: " + DeckDraw.print());
 
 }
