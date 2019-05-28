@@ -11,6 +11,10 @@ Deck.prototype.draw = function () {
   return this.list.pop();
 }
 
+Deck.prototype.getTopCard = function () {
+  return this.list[this.list.length-1];
+}
+
 Deck.prototype.drawHand = function () {
   var tempHand = [];
   for (var i = 0; i < 4; i++) {
