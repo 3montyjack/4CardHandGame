@@ -22,7 +22,6 @@ Deck.prototype.removeCard = function(card) {
 Deck.prototype.addCard = function(card) {
   // Find the card in the deck
   for (var i = 0; i < this.list.length; i++) {
-    //console.log(this.list[i].suit + " " + card.suit + " " + this.list[i].value + " " + card.value)
     if (this.list[i].suit == card.suit && this.list[i].value == card.value) {
       return false;
     }
@@ -32,6 +31,13 @@ Deck.prototype.addCard = function(card) {
 
   return true;
 };
+
+Deck.prototype.drawCard = function () {
+  if (this.list.length > 0) {
+    return this.list.pop();
+  } 
+  return null;
+}
 
 Deck.prototype.size = function () {
   return this.list.length

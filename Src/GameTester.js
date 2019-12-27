@@ -3,8 +3,9 @@
 function GameManager() {
   testCard();
   testDeck();
-  testHand();
-
+  testHandSetup();
+  testingPlayingHands();
+  testingOneRound();
 }
 function testCard() {
   console.log("______Testing Card______")
@@ -37,21 +38,52 @@ function testDeck() {
 
 }
 
-function testHand() {
-  console.log("______Testing Hand______")
+function testHandSetup() {
+  console.log("______Testing Hand Setup______")
   var numPlayers = 2;
   console.log("Number of players: " + numPlayers);
   var DeckDraw = new Deck(true);
   console.log("Draw Deck Stats: " + DeckDraw.print());
-
+  
   var DeckDiscard = new Deck(false);
-  console.log("Discard Deck Stats: " + DeckDraw.print());
-
+  console.log("Discard Deck Stats: " + DeckDiscard.print());
+  
   var hands = [];
-
-  for i = 0; i < numPlayers; i++) {
-    hands.push(new Hand());
+  
+  for (var i = 0; i < numPlayers; i++) {
+    hands.push(new Hand(DeckDraw));
     console.log(hands[i].print());
   }
+  console.log("Draw Deck Stats: " + DeckDraw.print());
+  console.log("Discard Deck Stats: " + DeckDiscard.print());
+}
 
+function testingPlayingHands() {
+  console.log("______Testing Playing Action______")
+  var numPlayers = 4;
+  var playerNames = ["A", "B", "C", "D"];
+
+  var game = new Game(numPlayers, playerNames);
+
+  console.log("Taking turn for player " + game.currentPlayer.toString())
+  result = game.takeTurn();
+  console.log("Finished Player " + game.currentPlayer.toString() + "'s turn")
+
+}
+
+function testingOneRound() {
+
+  console.log("______Testing One Round Of Actions______")
+  // TODO generate custom deck to test
+  var numPlayers = 4;
+  var playerNames = ["A", "B", "C", "D"];
+
+  var game = new Game(numPlayers, playerNames);
+
+  for (var i = 0; i < numPlayers; i++) {
+
+    console.log("Taking turn for player " + game.currentPlayer.toString())
+    result = game.takeTurn();
+    console.log("Finished Player " + game.currentPlayer.toString() + "'s turn")
+  }
 }
